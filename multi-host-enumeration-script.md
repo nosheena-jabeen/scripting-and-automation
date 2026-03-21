@@ -1,25 +1,52 @@
 # Basic Multi-Host Enumeration Script
 
-## 📌 Overview
-This Bash script performs automated enumeration against multiple targets listed in a file.
+---
 
-For each host, it:
-- Runs an initial Nmap scan
-- Identifies open ports
-- Performs service-specific enumeration (HTTP, FTP, SSH, SMB, databases, NFS)
-- Executes basic vulnerability checks
-- Saves results into individual report files
+## 📌 Description
+A Bash-based enumeration script that performs automated reconnaissance across multiple targets and generates individual reports per host.
 
-Designed for authorised lab environments and penetration testing practice.
+Designed for **authorised lab environments and penetration testing practice**.
 
 ---
 
-## 🚀 Usage
+## 🚀 Features
+- Multi-host scanning via input file
+- Automated service enumeration using Nmap
+- Web directory brute-forcing with Gobuster
+- Service-specific enumeration:
+  - HTTP/HTTPS
+  - FTP
+  - SSH
+  - SMB
+  - MySQL
+  - PostgreSQL
+  - NFS
+- Basic vulnerability checks (e.g. SMB, TLS)
+- Structured output reports per target
 
-```bash
-chmod +x enum.sh
-./enum.sh targets.txt
-```
+---
+
+## ⚙️ Requirements
+
+- Bash
+- `nmap`
+- `gobuster`
+- Wordlist:
+  ```
+  /usr/share/wordlists/dirb/common.txt
+  ```
+---
+
+## 🧠 How It Works
+
+1. Reads targets from input file
+2. Runs initial Nmap scan (`-sC -sV`)
+3. Detects open ports from scan results
+4. Conditionally runs:
+   - Service-specific enumeration
+   - Directory brute-forcing (web services)
+   - Vulnerability checks
+5. Saves structured output per host
 
 ---
 
